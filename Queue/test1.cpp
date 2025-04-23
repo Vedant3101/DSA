@@ -36,14 +36,14 @@ void Queue::enqueue()
     int value;
     cout << "Enter the value to be inserted: ";
     cin >> value;
-    if (rear == size - 1)
+    if ((rear + 1) % size == front)
     {
         cout<<"Queue is full\n";
         return;
     }
     else
     {
-        rear++;
+        rear = (rear + 1) % size;
         arr[rear] = value;
     }
     
@@ -58,7 +58,7 @@ void Queue::dequeue()
     }
     else
     {
-        front++;
+        front = (front + 1) % size;
     }
     cout << "Deleted element: " << arr[front] << endl;
 }
